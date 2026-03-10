@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://main_scene"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_game_manager"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_game_manager")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 100.0
+theme_override_constants/separation = 5
+
+[node name="ScoreLabel" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+text = "Score: 0"
+
+[node name="LivesLabel" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+text = "Lives: 3"
+
+[node name="LevelLabel" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+text = "Level: 1"

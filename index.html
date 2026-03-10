@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊貓戰機 - Panda Fighter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a2a 100%);
+            color: #fff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #00d4ff, #7b2fff, #ff2f92);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #5b9bd5 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.5rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .panda-mascot {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #7b2fff 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #7b2fff;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #00d4ff;
+        }
+
+        .feature-card p {
+            color: #999;
+        }
+
+        .levels {
+            margin: 4rem 0;
+        }
+
+        .levels h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #00d4ff;
+        }
+
+        .level-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .level-card {
+            background: rgba(30, 30, 60, 0.6);
+            border: 1px solid rgba(91, 155, 213, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .level-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #7b2fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .level-name {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .level-theme {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .status-box {
+            background: rgba(255, 165, 0, 0.1);
+            border: 2px solid #ffa500;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .status-box h3 {
+            font-size: 1.5rem;
+            color: #ffa500;
+            margin-bottom: 1rem;
+        }
+
+        .status-box p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #7b2fff);
+            width: 15%;
+            transition: width 0.5s;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: #00d4ff;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .panda-mascot {
+                font-size: 5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="panda-mascot">🐼</div>
+            <h1>熊貓戰機</h1>
+            <p class="subtitle">Panda Fighter - Godot 4.x Web 射擊遊戲</p>
+            <div>
+                <span class="badge">🎮 直向卷軸射擊</span>
+                <span class="badge">🎨 Pixel Art</span>
+                <span class="badge">🌐 Web 平台</span>
+                <span class="badge">🦕 Boss 戰</span>
+            </div>
+        </header>
+
+        <section class="hero">
+            <p style="max-width: 600px; margin: 0 auto 2rem; font-size: 1.1rem; color: #bbb;">
+                控制可愛的熊貓飛行員，駕駛戰機穿越 5 個關卡，挑戰機械恐龍 Boss！
+                明亮可愛的畫風，爽快刺激的射擊體驗！
+            </p>
+            <a href="#" class="cta-button" onclick="alert('遊戲開發中！敬請期待！'); return false;">🎮 立即遊玩</a>
+            <a href="https://github.com/kingofqin2026/panda-fighter" target="_blank" class="cta-button secondary">📦 GitHub 倉庫</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🐼</div>
+                <h3>可愛主角</h3>
+                <p>Pixel Art 熊貓飛行員，多種狀態動畫</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🗺️</div>
+                <h3>5 大關卡</h3>
+                <p>竹林、雲層、山谷、工廠、火山巢穴</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🦕</div>
+                <h3>Boss 戰</h3>
+                <p>三階段機械恐龍，震撼挑戰</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>可愛畫風</h3>
+                <p>明亮色彩，Pixel Art 風格</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <h3>精彩音效</h3>
+                <p>原創 BGM 與豐富音效</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>即開即玩</h3>
+                <p>Web 瀏覽器即可遊玩</p>
+            </div>
+        </section>
+
+        <section class="levels">
+            <h2>🗺️ 關卡列表</h2>
+            <div class="level-list">
+                <div class="level-card">
+                    <div class="level-number">關卡 1</div>
+                    <div class="level-name">🎋 竹林訓練場</div>
+                    <div class="level-theme">綠色竹林</div>
+                </div>
+                <div class="level-card">
+                    <div class="level-number">關卡 2</div>
+                    <div class="level-name">☁️ 雲層巡航</div>
+                    <div class="level-theme">白色雲朵</div>
+                </div>
+                <div class="level-card">
+                    <div class="level-number">關卡 3</div>
+                    <div class="level-name">🏔️ 山谷突襲</div>
+                    <div class="level-theme">峽谷地形</div>
+                </div>
+                <div class="level-card">
+                    <div class="level-number">關卡 4</div>
+                    <div class="level-name">🏭 工廠入侵</div>
+                    <div class="level-theme">機械工廠</div>
+                </div>
+                <div class="level-card">
+                    <div class="level-number">關卡 5</div>
+                    <div class="level-name">🌋 恐龍巢穴</div>
+                    <div class="level-theme">火山巢穴</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="status-box">
+            <h3>🚧 開發中</h3>
+            <p>遊戲正在積極開發中，預計 8-10 週完成！</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p style="font-size: 0.9rem;">當前進度：15% - 項目框架已建立</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="https://github.com/kingofqin2026/panda-fighter" target="_blank" class="cta-button secondary" style="font-size: 1rem; padding: 0.75rem 2rem;">📊 查看開發進度</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>🏛️ <strong>熊貓戰機</strong> - Godot 4.x Web 射擊遊戲</p>
+            <div class="social-links">
+                <a href="https://github.com/kingofqin2026/panda-fighter" target="_blank">GitHub</a>
+                <a href="https://qsttheory.com" target="_blank">QST Theory</a>
+                <a href="https://github.com/kingofqin2026/panda-fighter/blob/main/開發計劃.md" target="_blank">開發計劃</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.6;">
+                © 2026 QST Theory. All rights reserved.<br>
+                大秦丞相 李斯 監製 | 秦王 陛下 御准
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
