@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://level3"]
+
+[ext_resource type="Script" path="res://scripts/level_config.gd" id="1_level_config"]
+
+[resource]
+script = ExtResource("1_level_config")
+level_name = "山谷突襲"
+level_theme = "canyon"
+background_color = Color(0.3, 0.2, 0.1, 1.0)
+enemy_types = ["bee", "crow", "owl"]
+spawn_interval = 1.5
+max_enemies = 20
+boss_type = ""
+music_file = "res://assets/audio/music/level3.ogg"

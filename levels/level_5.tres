@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://level5"]
+
+[ext_resource type="Script" path="res://scripts/level_config.gd" id="1_level_config"]
+
+[resource]
+script = ExtResource("1_level_config")
+level_name = "恐龍巢穴"
+level_theme = "volcano"
+background_color = Color(0.4, 0.1, 0.1, 1.0)
+enemy_types = ["owl", "eagle"]
+spawn_interval = 1.0
+max_enemies = 25
+boss_type = "dinosaur"
+music_file = "res://assets/audio/music/level5.ogg"
