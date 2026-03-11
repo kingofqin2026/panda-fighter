@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://hud_scene"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+layer = 1
+script = ExtResource("1_hud")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ScoreContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/ScoreContainer"]
+layout_mode = 2
+text = "SCORE"
+
+[node name="ScoreValue" type="Label" parent="MarginContainer/VBoxContainer/ScoreContainer"]
+layout_mode = 2
+text = "000000"
+
+[node name="HighScoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "HI-000000"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ComboContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ComboLabel" type="Label" parent="MarginContainer/VBoxContainer/ComboContainer"]
+layout_mode = 2
+text = "COMBO"
+
+[node name="ComboValue" type="Label" parent="MarginContainer/VBoxContainer/ComboContainer"]
+layout_mode = 2
+text = "x1.0"
+
+[node name="ComboRank" type="Label" parent="MarginContainer/VBoxContainer/ComboContainer"]
+layout_mode = 2
+text = "C"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WeaponContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WeaponLabel" type="Label" parent="MarginContainer/VBoxContainer/WeaponContainer"]
+layout_mode = 2
+text = "WEAPON"
+
+[node name="WeaponValue" type="Label" parent="MarginContainer/VBoxContainer/WeaponContainer"]
+layout_mode = 2
+text = "NORMAL Lv.1"
+
+[node name="BombContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BombLabel" type="Label" parent="MarginContainer/VBoxContainer/BombContainer"]
+layout_mode = 2
+text = "BOMB"
+
+[node name="BombValue" type="Label" parent="MarginContainer/VBoxContainer/BombContainer"]
+layout_mode = 2
+text = "💣💣💣"
+
+[node name="WingmanContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="WingmanLabel" type="Label" parent="MarginContainer/VBoxContainer/WingmanContainer"]
+layout_mode = 2
+text = "WINGMAN"
+
+[node name="WingmanValue" type="Label" parent="MarginContainer/VBoxContainer/WingmanContainer"]
+layout_mode = 2
+text = "🛩️🛩️"
+
+[node name="LivesContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LivesLabel" type="Label" parent="MarginContainer/VBoxContainer/LivesContainer"]
+layout_mode = 2
+text = "LIVES"
+
+[node name="LivesValue" type="Label" parent="MarginContainer/VBoxContainer/LivesContainer"]
+layout_mode = 2
+text = "❤️❤️❤️"
